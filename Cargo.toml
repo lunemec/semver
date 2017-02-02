@@ -12,7 +12,8 @@ Semantic version parsing and comparison.
 """
 
 [dependencies]
-semver-parser = "0.6.1"
+# New version with public common.
+semver-parser = "0.7.1"
 regex = "0.1"
 lazy_static = "0.2.1"
 
