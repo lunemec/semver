@@ -4,10 +4,9 @@ extern crate clap;
 extern crate lazy_static;
 extern crate semver;
 extern crate semver_parser;
-extern crate regex;
 
-use regex::Regex;
 use semver::{Identifier, Version};
+use semver_parser::common::is_alpha_numeric;
 use clap::{Arg, App};
 
 // "safe" main function for returning status code.
@@ -101,14 +100,6 @@ fn is_not_empty(val: String) -> Result<(), String> {
     } else {
         Err(String::from("VERSION must not be empty"))
     }
-}
-
-// Borrowed from semver-parser (common is not public).
-fn is_alpha_numeric(s: &str) -> bool {
-    lazy_static! {
-        static ref REGEX: Regex = Regex::new(r"^(0|[1-9][0-9]*)$").unwrap();
-    };
-    !REGEX.is_match(s)
 }
 
 // Deduplicate and push identifier into vec of identifiers.
